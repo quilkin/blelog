@@ -2,7 +2,7 @@
 
 Connect.cs
 *.zip
-
+amcharts*/
 
 # Windows image file caches
 Thumbs.db
