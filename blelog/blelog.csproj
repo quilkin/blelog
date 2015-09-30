@@ -62,7 +62,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="config.xml" />
+    <Content Include="www\config.xml" />
     <Content Include="copyfiles.bat" />
     <Content Include="JSLintNet.json" />
     <None Include="_references.js" />
