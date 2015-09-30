@@ -1,0 +1,37 @@
+﻿{
+  "ignore": [
+    "\\www\\js\\bootbox.min.js",
+    "\\www\\js\\bootstrap-datepicker.js",
+    "\\www\\js\\bootstrap.js",
+    "\\www\\js\\bootstrap.min.js",
+    "\\www\\js\\dataTables.bootstrap.min.js.js",
+    "\\www\\js\\dataTables.responsive.min.js",
+    "\\www\\js\\ie10-viewport-bug-workaround.js",
+    "\\www\\js\\ion.rangeSlider.js",
+    "\\www\\js\\jquery-1.11.1.min.js",
+    "\\www\\js\\jquery.bootstrap-touchspin.min.js",
+    "\\www\\js\\jquery.dataTables.min.js",
+    "\\www\\js\\platformOverrides.js",
+    "\\www\\js\\serial.js",
+    "\\www\\js\\bluetoothle.js",
+    "\\www\\js\\amcharts.js"
+  ],
+  "options": {
+    "predef": {
+      "$": true,
+      "document": true,
+      "bleApp": true,
+      "bleData": true,
+      "login": true,
+      "setup": true,
+      "bleTag": true,
+      "window": true,
+      "mylog": true,
+      "tagConnect": true,
+      "popup": true
+    },
+    "plusplus": true,
+    "unparam": true,
+    "white": true
+  }
+}

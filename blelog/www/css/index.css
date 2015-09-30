@@ -1,0 +1,76 @@
+﻿body {
+    margin: 10px;
+}
+#myTabContent {
+    margin-top:71px;
+}
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}
+.scrollable-list {
+    height: auto;
+    max-height: 250px;
+    overflow-x: hidden;
+}
+#loading {
+
+  /*width: 2%;
+  height: 2%;*/
+  /*top: 0px;
+  left: 0px;*/
+  position:relative;
+  display: block;
+  opacity: 0.7;
+  background-color: #fff;
+  z-index: 99;
+  text-align: center;
+}
+
+#loading-image {
+
+  position:absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -64px; /* -1 * image width / 2 */
+  margin-top: -64px; /* -1 * image height / 2 */
+  z-index: 100;
+}
+
+.btn-lifted {
+    /* to get buttons in correct place when in list title*/
+     position:relative; margin-top:-5px;
+     
+}
+
+.side-label {
+    /*text-align: right;
+    clear: both;
+    float:left;
+    color:    rgb(134, 26, 34);
+    left:100px;*/
+}
+
+.side-input {
+    /*max-width: 250px;
+    float:inherit;*/
+}
+
+
+@media (min-width: 256px) 
+{ 
+    div[class^="col"]{padding-left:5px; padding-right:5px;}
+}
+
+@media (min-width: 512px) 
+{ 
+    div[class^="col"]{padding-left:10px; padding-right:10px;}
+}
+
+
+@media (min-width: 768px) 
+{   
+    div[class^="col"]{padding-left:15px; padding-right:15px;}
+}
+

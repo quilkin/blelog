@@ -1,0 +1,293 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>BLE Log</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+    <link href="css/datepicker3.css" rel="stylesheet">
+    <link href="css/ion.rangeSlider.css" rel="stylesheet" >
+    <link href="css/ion.rangeSlider.skinHTML5.css" rel="stylesheet">
+    <!--<link href="css/jquery.bootstrap-touchspin.min.css" rel="stylesheet">-->
+    
+</head>
+
+<body>
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" id="btnMenu" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" style="color:blue" id="realtime">BLE Log<span style="color:black; font-size:small"></span></a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right" role="tablist">
+                    <li class="active"><a href="#home" id="home-tab" role="tab" data-toggle="tab" aria-controls="home" aria-expanded="true"><span class="glyphicon glyphicon-transfer"></span> Connect</a></li>
+                    <li><a href="#webdata" id="webdata-tab" role="tab" data-toggle="tab" aria-controls="webdata"><span class="glyphicon glyphicon-cloud"></span> Web data</a></li>
+                    <li><a href="#panel-setup" id="setup-tab" role="tab" data-toggle="tab" aria-controls="setup"><span class="glyphicon glyphicon-wrench"></span>Set Up</a></li>
+                    <!--<li><a href="#signin" id="signin-tab" role="tab" data-toggle="tab" aria-controls="signin"><span class="glyphicon glyphicon-user"></span> Sign In</a></li>-->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="myTabContent" class="tab-content">
+
+        <div role="tabpanel" class="tab-pane fade in active" id="home" aria-labelledby="home-tab">
+
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <div class="list-group scrollable-list" id="scanlist"> <a id="scanTitle" class="list-group-item list-group-item-info">Search for devices</a> </div>
+                        <p></p>
+                        <!--<div>
+                            <button id="register" type="button" class="btn btn-info btn-block"><span class="glyphicon glyphicon-pencil"></span>Register sensors</button>
+                        </div>-->
+                        <div class="progress" id="progress-bar">
+                            <div class="progress-bar" role="progressbar" id="progress" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">0%</div>
+                        </div>
+                        <div id="upload-all">
+                            <button id="upload-button" type="button" class="btn btn-info btn-block" data-loading-text="Uploading..."><span class="glyphicon glyphicon-cloud"></span> Upload data</button>
+                        </div>
+                        <!--<button id="testUpload" type="button" class="btn btn-info ">Test Upload</button>-->
+                        
+                        <div> <p id="statusConnect" />  </div>
+                    </div> <!-- /col-md-4 -->
+                    <p></p>
+                    <div class="col-md-4">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading" id="newChartName">Chart</div>
+                            <div class="panel-body">
+                                <div class="newChart">  <div data-role="content" class="amChart" id="newChart"></div>  </div>
+                            </div>
+                        </div>
+                    </div> <!-- /col-md-4 -->
+                    <div class="col-md-4">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading" id="newTableName">Data table</div>
+                            <div class="panel-body"> <p id="newTable"></p>  </div>
+                        </div>
+                    </div> <!-- /col-md-4 -->
+                </div> <!-- /row -->
+            </div> <!-- /container -->
+        </div> <!-- /tab-pane -->
+        <div role="tabpanel" class="tab-pane fade" id="webdata" aria-labelledby="webdata-tab">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+
+                        <div class="list-group" id="chooseDates">
+                            <a id="dateTitle" class="list-group-item list-group-item-info"></a>
+                            <a id="fromDate" class="list-group-item">From date:&emsp;<input type="text" id="startDate" readonly><span class="glyphicon glyphicon-calendar"></span></a>
+                            <a id="toDate" class="list-group-item">&emsp;To date:&emsp;<input type="text" id="endDate" readonly><span class="glyphicon glyphicon-calendar"></span></a>
+                        </div>
+                        <p></p>
+                        <!--<div class="list-group scrollable-list" id="findlist"> <a id="findTitle" class="list-group-item list-group-item-info">Choose sensor(s)</a> </div>-->
+                        <div class="list-group scrollable-list" id="findlist"> 
+                            <a id="findTitle" class="list-group-item list-group-item-info">Choose sensor(s)</a>
+                            <div>
+                                <button id="showSelected" type="button" class="btn btn-info  pull-right">Show Selection</button>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="col-md-4">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading" id="chartName">Chart</div>
+                            <div class="panel-body">
+
+                                <div class="dbChart">
+                                    <div data-role="content" class="amChart" id="dbChart"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading" id="tableName">Load tabular data</div>
+                            <!--      <button id="loadTable" type="button" class="btn btn-primary ">Load tabular data</button>-->
+                            <div class="panel-body">
+                                <p id="dataTable"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>  <!-- /row -->
+
+                <hr>
+                <footer>
+                    <p>&copy; Quilkin 2015</p>
+                </footer>
+            </div> <!-- /container -->
+        </div> <!-- /tab-pane -->
+
+
+        <div role="tabpanel" class="tab-pane fade" id="panel-setup" aria-labelledby="setup-tab">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="list-group scrollable-list" id="setuplist">Set up sensor</div>
+
+                    </div>
+                    <div class="col-md-9">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading" id="sensorTitle">Set up Sensor</div>
+
+                            <div class="panel-body">
+                                <form id="form-setup">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="sensor-name" class="control-label side-label">Name:</label>
+                                                <input type="text" class="form-control  side-input detectChange" id="sensor-name">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="sensor-desc" class="control-label side-label">Description:</label>
+                                                <input type="text" class="form-control side-input detectChange" id="sensor-desc">
+                                            </div>
+                                        </div>
+
+                                        <!--<div class="col-md-3" style="float:right;">-->
+                                        <div class="col-md-3 col-md-offset-1">
+                                            <div class="form-group">
+                                                <label for="periodMenu" class="control-label side-label">Logging Period:</label>
+                                                <div class="dropdown">
+                                                    <button class="btn btn-default dropdown-toggle  side-input " type="button" id="periodMenu" data-toggle="dropdown" aria-expanded="true">
+                                                        Recording Period  <span class="caret"></span>
+                                                    </button>
+                                                    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" id="periodlist"/>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </form>
+                                <div style="text-align:center">
+                                    Low and High Alarms....
+                                    <input id="sliderAlarm" type="text" name="example_name" value="" />
+                                    <div class="row">
+                                        <div class="col-md-3" style="float:left;">
+                                            <!--                            <input id="minAlarm" type="text" value="2" name="minAlarm">-->
+                                            <div class="btn-group" role="group" aria-label="...">
+                                                <button id="btnLow-" type="button" class="btn btn-info">-</button>
+                                                <button type="button" class="btn btn-default disabled">Lo</button>
+                                                <button id="btnLowPlus" type="button" class="btn btn-info">+</button>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-3" style="float:right;">
+                                            <!--                           <input id="maxAlarm" type="text" value="8" name="maxAlarm">-->
+                                            <div class="btn-group" role="group" aria-label="...">
+                                                <button id="btnHi-" type="button" class="btn btn-info">-</button>
+                                                <button type="button" class="btn btn-default disabled">Hi</button>
+                                                <button id="btnHiPlus" type="button" class="btn btn-info">+</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div> <!-- /panel-body-->
+                            <div class="panel-footer">
+                                <button type="button" class="btn btn-primary" id="cancelChanges" data-dismiss="modal">Cancel</button>
+                                <button type="button" class="btn btn-info pull-right " id="setupDone" data-dismiss="modal">Done</button>
+                            </div>
+                        </div> <!-- /panel-->
+                    </div> <!-- /col-->
+                </div>  <!-- /row -->
+            </div>  <!-- /container -->
+        </div> <!-- /tab-pane -->
+    </div> <!-- /tab-content -->
+
+    <div id="loginModal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Login / Register</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-signin" id="form-signin">
+                        <h3 class="form-signin-heading">Please sign in</h3>
+                        <label for="username" class="sr-only">Username or Email address</label>
+                        <input type="text" id="username" class="form-control" placeholder="Email address" required autofocus>
+                        <label for="password" class="sr-only">Password</label>
+                        <input type="password" id="password" class="form-control" placeholder="Password" required>
+                        <div class="checkbox">
+                            <label>
+                                <input id="remember" type="checkbox" value="remember-me"> Remember me
+                            </label>
+                        </div>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit" id="button-signin" data-loading-text="Checking...">Sign in</button>
+                    </form>
+                    <form class="form-register" id="form-register">
+                        <h4 class="form-register-heading">...or register</h4>
+                        <input type="text" id="username1" class="form-control" placeholder="User name" required autofocus>
+                        <input type="email" id="email1" class="form-control" placeholder="Email address" required autofocus>
+                        <input type="password" id="password1" class="form-control" placeholder="Password" required>
+                        <input type="password" id="password2" class="form-control" placeholder="Confirm password" required>
+                        <input type="text" id="code" class="form-control" placeholder="Code from return email">
+
+                        <button class="btn btn-lg btn-primary btn-block" type="submit" id="button-register" data-loading-text="Registering...">Register</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <!--<button type="button" class="btn btn-info" id="saveChanges">Save changes</button>
+                    <button type="button" class="btn btn-primary" id="setupDone" data-dismiss="modal">Done</button>-->
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="cordova.js"></script>
+    <!--<script src="js/jquery-2.1.3.min.js"></script>-->
+    <script src="js/jquery-1.11.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+    <script src="js/bootbox.min.js"></script>
+    <script src="js/amcharts.js"></script>
+    <script src="js/serial.js"></script>
+    <!--<script src="js/jquery.bootstrap-touchspin.min.js"></script>-->
+    <script src="js/timesdates.js"></script>
+    <script src="js/popups.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/index.js"></script>
+
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/myTable.js"></script>
+    <script src="js/sensors.js"></script>
+    <script src="js/TTdata.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+    <script src="js/amchart.js"></script>
+    <script src="js/ion.rangeSlider.js"></script>
+
+    <script src="js/setup.js"></script>
+    <script src="js/tagconnect.js"></script>
+    <!--<script src="js/SensorTag.js"></script>-->
+</body>
+</html>
+
+
+
+
