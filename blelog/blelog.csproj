@@ -95,9 +95,9 @@
     <Content Include="www\css\jquery.dataTables.min.css" />
     <Content Include="www\css\normalize.css" />
     <Content Include="www\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="www\images\icon.png" />
+    <Content Include="www\icon.png" />
     <Content Include="www\images\page-loader.gif" />
-    <Content Include="www\images\splash.PNG" />
+    <Content Include="www\splash.PNG" />
     <Content Include="www\index.html" />
     <Content Include="www\js\amchart.js" />
     <Content Include="www\js\amcharts.js" />

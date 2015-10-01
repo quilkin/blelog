@@ -11,6 +11,6 @@
 
   <gap:platform name="ios" />
   <gap:platform name="android"/>
-  <gap:icon src="images/icon.png" />
-  <gap:splash src="images/splash.png" />
+  <icon src="icon.png" />
+  <gap:splash src="splash.png" />
 </widget>
